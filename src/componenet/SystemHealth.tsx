@@ -39,7 +39,7 @@ export function SystemHealth({ metrics, dlqRescues }: SystemHealthProps) {
               </div>
             </td>
             <td>
-              <div className="stat-box" style={{ borderColor: "var(--blue)" }}>
+              <div className="stat-box">
                 <h3 style={{ color: "var(--blue)" }}>DLQ RESCUES</h3>
                 <div className="value val-dlq">{dlqRescues || 0}</div>
               </div>

@@ -1,4 +1,3 @@
-// src/Dashboard.tsx
 import { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import "./Dashboard.css";
@@ -83,9 +82,14 @@ export default function Dashboard() {
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
 
     // Auto-switch between local testing and production Worker
-    const WS_URL = import.meta.env?.DEV
+    // const isLocal = import.meta.env?.DEV;
+    const isLocal = false;
+
+    const WS_URL = isLocal
       ? "ws://127.0.0.1:8787/api/v1/admin/dashboard/ws"
-      : `${protocol}//api.flashsale.eradev.xyz/api/v1/admin/dashboard/ws`;
+      : "wss://flashsalebackend.gudduahmedansari786.workers.dev/api/v1/admin/dashboard/ws";
+
+    console.log("Attempting to connect to WebSocket at:", WS_URL); // <-- Added this so you can debug!
 
     const socket = new WebSocket(WS_URL);
     wsRef.current = socket;
