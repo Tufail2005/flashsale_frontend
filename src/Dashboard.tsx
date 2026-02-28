@@ -79,15 +79,8 @@ export default function Dashboard() {
 
   // --- WEBSOCKET LIFECYCLE ---
   const connectWebSocket = useCallback(() => {
-    const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-
-    // Auto-switch between local testing and production Worker
-    // const isLocal = import.meta.env?.DEV;
-    const isLocal = false;
-
-    const WS_URL = isLocal
-      ? "ws://127.0.0.1:8787/api/v1/admin/dashboard/ws"
-      : "wss://flashsalebackend.gudduahmedansari786.workers.dev/api/v1/admin/dashboard/ws";
+    const WS_URL =
+      "wss://flashsalebackend.gudduahmedansari786.workers.dev/api/v1/admin/dashboard/ws";
 
     console.log("Attempting to connect to WebSocket at:", WS_URL); // <-- Added this so you can debug!
 
